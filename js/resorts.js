@@ -44,10 +44,15 @@ function ResortsViewModel() {
         });
         var marker = new window.google.maps.Marker({
             position: position,
-            title: name
+            title: name,
+            animation: google.maps.Animation.DROP
         });
         marker.addListener('click', function() {
             infowindow.open(map, marker);
+        });
+        marker.addListener('click', function() {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function() { marker.setAnimation(null);}, 1410);
         });
         marker.setMap(map);
         self.markers[name] = marker;
@@ -63,7 +68,7 @@ function ResortsViewModel() {
     // Sets the map on all markers in the array.
     self.setMapOnAll = function(map) {
         for (var marker in self.markers) {
-            console.log(self.markers[marker]);
+            //console.log(self.markers[marker]);
             self.markers[marker].setMap(map);
         }
     }
