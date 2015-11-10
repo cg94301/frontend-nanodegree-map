@@ -94,6 +94,12 @@ function ResortsViewModel() {
         }
     }, self);
 
+    self.onclickResort = function(data) {
+        //console.log("resort from list clicked");
+        //console.log(data.name);
+        new google.maps.event.trigger(self.markers[data.name],'click');
+    }
+    
 }
 
 ko.applyBindings(new ResortsViewModel());
