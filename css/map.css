@@ -1,5 +1,18 @@
 html, body { height: 100%; margin: 0; padding: 0; }
 #map { height: 100%; }
+
+ul {
+    list-style-type: none;
+    padding-left: 12px;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+input {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
 .header__menu {
     display: inline-block;
     //position: absolute;
@@ -34,6 +47,8 @@ html, body { height: 100%; margin: 0; padding: 0; }
 
 #drawer {
     position: absolute;
+    left: 0px;
+    top: 0px;
     background-color: #505050;
       }
 
