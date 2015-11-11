@@ -19,7 +19,9 @@
 
     <!-- list of filtered resorts -->
     <nav class="nav">
-      <input id="filter" type="text"/>
+      <label for="filter">FILTER by</label>
+      <input id="filter" type="text" name="search"/>
+
       <ul data-bind="foreach: {data: filteredItems}">
         <li data-bind="text: $data.name, click: $root.onclickResort"></li>
       </ul>

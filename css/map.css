@@ -13,6 +13,11 @@ input {
     margin-top: 10px;
 }
 
+label {
+    color: #fff;
+    font-family: sans-serif;
+}
+
 .menu {
     display: inline-block;
     right: 0;
@@ -30,14 +35,14 @@ input {
 
 .nav {
     z-index: 10;
-    width: 200px;
+    width: 250px;
     position: absolute;
     left: 0px;
     Top: 0px;
     background-color: #000000;
     /* this transform moves the drawer off canvas. */
-    -webkit-transform: translate(-200px, 0);
-    transform: translate(-200px, 0);
+    -webkit-transform: translate(-250px, 0);
+    transform: translate(-250px, 0);
     /* optionally, we animate the drawer. */
     transition: transform 0.3s ease;
 }
