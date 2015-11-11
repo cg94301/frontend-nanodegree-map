@@ -35,6 +35,9 @@
 
     <!--     <script src="js/resorts.js" type="text/javascript"></script> -->
 
+    <script async defer src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+    <!-- replace w/ jQuery $(function() { .... }); -->
     <script type="text/javascript">
       function downloadJSAtOnload() {
         var element = document.createElement("script");
@@ -47,7 +50,6 @@
         window.attachEvent("onload", downloadJSAtOnload);
       else window.onload = downloadJSAtOnload;
     </script> 
-
-
+    
   </body>
 </html>

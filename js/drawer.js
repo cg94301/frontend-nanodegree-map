@@ -1,8 +1,8 @@
 // Catch any error
-window.onerror = function(msg, file, line) {
-    alert(msg);
-    return true;
-}
+//window.onerror = function(msg, file, line) {
+//    alert(msg + "::" + file + "::" + line);
+//    return true;
+//}
 
 /*
  * Open the drawer when the menu ison is clicked.
