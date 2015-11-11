@@ -1,15 +1,17 @@
 var map;
-var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+var wmap = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
+// Zoom out for smaller screens
 function selectZoom(w) {
     var zoom = 9;
-    if ( w > 320 ) zoom = 10;
+    if ( wmap > 320 ) zoom = 10;
     return zoom;
 }
 
+// Center map around lake Tahoe
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 38.9019, lng: -120.0471},
-        zoom: selectZoom(w)
+        center: {lat: 39.0133, lng: -120.0508},
+        zoom: selectZoom(wmap)
     });
 }
