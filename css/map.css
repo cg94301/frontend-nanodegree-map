@@ -13,43 +13,34 @@ input {
     margin-top: 10px;
 }
 
-.header__menu {
+.menu {
     display: inline-block;
-    //position: absolute;
     right: 0;
     padding: 1em;
-}
-
-.header__menu svg {
-      width: 32px;
-      //fill: #E0E0E0;
-      fill: #000000;
-}
-
-#menu {
     position: absolute;
     right: 0px;
     top: 0px;
     z-index: 1;
 }
 
-.nav {
-    z-index: 10;
-    background-color: #fff;
-    width: 200px;
-    /* This trasform moves the drawer off canvas. */
-    -webkit-transform: translate(-200px, 0);
-    transform: translate(-200px, 0);
-    /* Optionally, we animate the drawer. */
-    transition: transform 0.3s ease;
+.menu svg {
+    width: 32px;
+    fill: #000000;
 }
 
-#drawer {
+.nav {
+    z-index: 10;
+    width: 200px;
     position: absolute;
     left: 0px;
-    top: 0px;
+    Top: 0px;
     background-color: #000000;
-      }
+    /* this transform moves the drawer off canvas. */
+    -webkit-transform: translate(-200px, 0);
+    transform: translate(-200px, 0);
+    /* optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+}
 
 .nav.open {
     -webkit-transform: translate(0, 0);
