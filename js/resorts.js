@@ -1,3 +1,10 @@
+var globalfilter = '';
+
+function setglobalfilter(value) {
+    globalfilter = value;
+    console.log(globalfilter);
+}
+
 var ResortList = {};
 
 ResortList['Squaw Valley'] = {pos: {lat: 39.1963, lng: -120.2336}, 
@@ -108,6 +115,13 @@ function ResortsViewModel() {
             self.markers[marker].setMap(map);
         }
     }
+
+
+    var dfilter = document.getElementById('drawerfilter');
+    dfilter.addEventListener('input', function(event) {
+        console.log(dfilter.value);
+        self.filter(dfilter.value);
+    });
 
     //filter the items using the filter text
     self.filteredItems = ko.computed(function() {

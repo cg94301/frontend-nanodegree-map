@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ski Tahoe</title>
     <link rel="stylesheet" type="text/css" href="css/map.css">
-    <script src="js/knockout-3.3.0.js" type="text/javascript"></script>
+    <script src="js/libs/knockout-3.3.0.js" type="text/javascript"></script>
+    <script src="js/libs/jquery.min.js"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_gHKK79JvFexkVRG9e1Zl1zMGGw9oRE"></script> -->
   </head>
   <body>
@@ -18,6 +19,7 @@
 
     <nav id="drawer" class="nav">
       <input data-bind="value: filter"/>
+      <input id="drawerfilter" type="text""/>
       <ul data-bind="foreach: {data: filteredItems}">
         <li data-bind="text: $data.name, click: $root.onclickResort"></li>
       </ul>
@@ -32,12 +34,6 @@
          w/ synchronous the markers can be dropped, but the map is not ready -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_gHKK79JvFexkVRG9e1Zl1zMGGw9oRE&callback=initMap"></script>
 
-
-    <!--     <script src="js/resorts.js" type="text/javascript"></script> -->
-
-    <script async defer src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-
-    <!-- replace w/ jQuery $(function() { .... }); -->
     <script type="text/javascript">
       function downloadJSAtOnload() {
         var element = document.createElement("script");
@@ -49,7 +45,7 @@
       else if (window.attachEvent)
         window.attachEvent("onload", downloadJSAtOnload);
       else window.onload = downloadJSAtOnload;
-    </script> 
-    
+    </script>
+
   </body>
 </html>
