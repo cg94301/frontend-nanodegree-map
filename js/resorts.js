@@ -12,15 +12,15 @@ var ResortList = {};
 
 ResortList['Squaw Valley'] = {pos: {lat: 39.1963, lng: -120.2336},
                               info: 'peak: 9,050 ft. trails: 170+'};
-ResortList['Heavenly'] = {pos: {lat: 38.9377, lng: -119.9088},
+ResortList.Heavenly = {pos: {lat: 38.9377, lng: -119.9088},
                           info: 'peak: 10,067 ft. trails: 97'};
-ResortList['Kirkwood'] = {pos: {lat: 38.6840, lng: -120.0693},
+ResortList.Kirkwood = {pos: {lat: 38.6840, lng: -120.0693},
                           info: 'peak: 9,800 ft. trails: 65+'};
 ResortList['Sugar Bowl'] = {pos: {lat: 39.3044, lng: -120.3358},
                             info: 'peak: 8,383 ft. trails: 103'};
 ResortList['Mt Rose'] = {pos: {lat: 39.3292, lng: -119.8858},
                          info: 'peak: 9,700 ft. trails: 60+'};
-ResortList['Northstar'] = {pos: {lat: 39.2733, lng: -120.1025},
+ResortList.Northstar = {pos: {lat: 39.2733, lng: -120.1025},
                            info: 'peak: 8,610 ft. trails: 100'};
 ResortList['Alpine Meadows'] = {pos: {lat: 39.1786, lng: -120.2277},
                                 info: 'peak: 8,637 ft. trails: 100'};
@@ -30,9 +30,9 @@ ResortList['Bear Valley'] = {pos: {lat: 38.4922, lng: -120.0067},
                              info: 'peak: 8,500 ft. trails: 67'};
 ResortList['Diamond Peak'] = {pos: {lat: 39.2539, lng: -119.9153},
                               info: 'peak: 8,540 ft. trails: 30'};
-ResortList['Boreal'] = {pos: {lat: 39.3317, lng: -120.3511},
+ResortList.Boreal = {pos: {lat: 39.3317, lng: -120.3511},
                         info: 'peak: 7,700 ft. trails: 41'};
-ResortList['Homewood'] = {pos: {lat: 39.0827, lng: -120.1755},
+ResortList.Homewood = {pos: {lat: 39.0827, lng: -120.1755},
                           info: 'peak: 7,881 ft. trails: 60'};
 
 function SkiResort(name, position) {
@@ -97,14 +97,14 @@ function ResortsViewModel() {
         marker.setMap(map);
         // Store marker
         self.markers[name] = marker;
-    }
+    };
 
     // De-/activate  map on all markers in the array.
     self.setMapOnAll = function(map) {
         for (var marker in self.markers) {
             self.markers[marker].setMap(map);
         }
-    }
+    };
 
     // Put event listener on the filter input
     var dfilter = document.getElementById('filter');
@@ -134,7 +134,7 @@ function ResortsViewModel() {
     // Trigger marker when resort is clicked in list
     self.onclickResort = function(data) {
         new google.maps.event.trigger(self.markers[data.name],'click');
-    }
+    };
 
     // MAIN: Generate list of resorts and markers
     for (var resort in ResortList) {
