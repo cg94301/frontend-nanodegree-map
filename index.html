@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ski Tahoe</title>
     <link rel="stylesheet" type="text/css" href="css/map.css">
-    <script src="js/libs/knockout-3.3.0.js" type="text/javascript"></script>
-    <script src="js/libs/jquery.min.js" type="text/javascript"></script>
+    <script src="js/libs/knockout-3.3.0.js"></script>
+    <script src="js/libs/jquery.min.js"></script>
   </head>
   <body>
 
@@ -29,21 +29,22 @@
 
     <!-- load map for Lake Tahoe -->
     <div id="map"></div>
-    <script src="js/map.js" type="text/javascript"></script>
+    <script src="js/map.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_gHKK79JvFexkVRG9e1Zl1zMGGw9oRE&callback=initMap"></script>
 
     <!-- only place markers when google api loaded -->
-    <script type="text/javascript">
+    <script>
       function downloadJSAtOnload() {
-      var element = document.createElement("script");
-      element.src = "js/resorts.js";
-      document.body.appendChild(element);
+        var element = document.createElement("script");
+        element.src = "js/resorts.js";
+        document.body.appendChild(element);
       }
       if (window.addEventListener)
-      window.addEventListener("load", downloadJSAtOnload, false);
+        window.addEventListener("load", downloadJSAtOnload, false);
       else if (window.attachEvent)
-      window.attachEvent("onload", downloadJSAtOnload);
-      else window.onload = downloadJSAtOnload;
+        window.attachEvent("onload", downloadJSAtOnload);
+      else 
+        window.onload = downloadJSAtOnload;
     </script>
 
   </body>
