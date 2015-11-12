@@ -7,47 +7,48 @@ menu.addEventListener('click', function(e) {
     e.stopPropagation();
 });
 
-// Resorts view model section
-var ResortList = {};
-
-ResortList['Squaw Valley'] = {pos: {lat: 39.1963, lng: -120.2336},
-                              info: 'peak: 9,050 ft. trails: 170+'};
-ResortList.Heavenly = {pos: {lat: 38.9377, lng: -119.9088},
-                          info: 'peak: 10,067 ft. trails: 97'};
-ResortList.Kirkwood = {pos: {lat: 38.6840, lng: -120.0693},
-                          info: 'peak: 9,800 ft. trails: 65+'};
-ResortList['Sugar Bowl'] = {pos: {lat: 39.3044, lng: -120.3358},
-                            info: 'peak: 8,383 ft. trails: 103'};
-ResortList['Mt Rose'] = {pos: {lat: 39.3292, lng: -119.8858},
-                         info: 'peak: 9,700 ft. trails: 60+'};
-ResortList.Northstar = {pos: {lat: 39.2733, lng: -120.1025},
-                           info: 'peak: 8,610 ft. trails: 100'};
-ResortList['Alpine Meadows'] = {pos: {lat: 39.1786, lng: -120.2277},
-                                info: 'peak: 8,637 ft. trails: 100'};
-ResortList['Sierra at Tahoe'] = {pos: {lat: 38.8078, lng: -120.0847},
-                                 info: 'peak: 8,852 ft. trails: 46'};
-ResortList['Bear Valley'] = {pos: {lat: 38.4922, lng: -120.0067},
-                             info: 'peak: 8,500 ft. trails: 67'};
-ResortList['Diamond Peak'] = {pos: {lat: 39.2539, lng: -119.9153},
-                              info: 'peak: 8,540 ft. trails: 30'};
-ResortList.Boreal = {pos: {lat: 39.3317, lng: -120.3511},
-                        info: 'peak: 7,700 ft. trails: 41'};
-ResortList.Homewood = {pos: {lat: 39.0827, lng: -120.1755},
-                          info: 'peak: 7,881 ft. trails: 60'};
-
-function SkiResort(name, position) {
-    var self = this;
-    self.name = name;
-    self.position = position;
-}
 
 function ResortsViewModel() {
 
     var self = this;
 
+    // Resorts view model section
+    self.ResortList = {};
+    
+    self.ResortList['Squaw Valley'] = {pos: {lat: 39.1963, lng: -120.2336},
+                                  info: 'peak: 9,050 ft. trails: 170+'};
+    self.ResortList.Heavenly = {pos: {lat: 38.9377, lng: -119.9088},
+                           info: 'peak: 10,067 ft. trails: 97'};
+    self.ResortList.Kirkwood = {pos: {lat: 38.6840, lng: -120.0693},
+                           info: 'peak: 9,800 ft. trails: 65+'};
+    self.ResortList['Sugar Bowl'] = {pos: {lat: 39.3044, lng: -120.3358},
+                                info: 'peak: 8,383 ft. trails: 103'};
+    self.ResortList['Mt Rose'] = {pos: {lat: 39.3292, lng: -119.8858},
+                             info: 'peak: 9,700 ft. trails: 60+'};
+    self.ResortList.Northstar = {pos: {lat: 39.2733, lng: -120.1025},
+                            info: 'peak: 8,610 ft. trails: 100'};
+    self.ResortList['Alpine Meadows'] = {pos: {lat: 39.1786, lng: -120.2277},
+                                    info: 'peak: 8,637 ft. trails: 100'};
+    self.ResortList['Sierra at Tahoe'] = {pos: {lat: 38.8078, lng: -120.0847},
+                                     info: 'peak: 8,852 ft. trails: 46'};
+    self.ResortList['Bear Valley'] = {pos: {lat: 38.4922, lng: -120.0067},
+                                 info: 'peak: 8,500 ft. trails: 67'};
+    self.ResortList['Diamond Peak'] = {pos: {lat: 39.2539, lng: -119.9153},
+                                  info: 'peak: 8,540 ft. trails: 30'};
+    self.ResortList.Boreal = {pos: {lat: 39.3317, lng: -120.3511},
+                         info: 'peak: 7,700 ft. trails: 41'};
+    self.ResortList.Homewood = {pos: {lat: 39.0827, lng: -120.1755},
+                           info: 'peak: 7,881 ft. trails: 60'};
+
     self.markers = {};
     self.filter = ko.observable('');
     self.resorts = [];
+
+    self.SkiResort = function(name, position) {
+        var self = this;
+        self.name = name;
+        self.position = position;
+    }
 
     // Places markers on map. Adds events and infowindow to markers.
     self.placeMarker = function(name, position) {
@@ -60,12 +61,12 @@ function ResortsViewModel() {
 
         marker.addListener('click', function() {
 
-            var lat = ResortList[name].pos.lat;
-            var lng = ResortList[name].pos.lng;
+            var lat = self.ResortList[name].pos.lat;
+            var lng = self.ResortList[name].pos.lng;
             var squareurl = 'https://api.foursquare.com/v2/venues/search?client_id=IELX4KNZFYKNYAGXKB2LTGSFWQ2VUZLCYWUJBJLUEMVVXPWE&client_secret=NANOUHNSJ4FZPIU1C5YFA53P2ZDMZTBTQMBPHIGB5X0NWKKV&v=20140730&locale=en&radius=2000&ll=' + lat + ',' + lng + '&limit=5';
             var squarearray = [];
             var infowindow = new google.maps.InfoWindow({
-                content: '<b>' + name + '</b>' + '<span> ' + ResortList[name].info + '</span>'
+                content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>'
             });
 
             // Access Foursquare JSON
@@ -83,7 +84,7 @@ function ResortsViewModel() {
             }).error(function(e){
                 console.log(e);
                 var infowindow = new google.maps.InfoWindow({
-                    content: '<b>' + name + '</b>' + '<span> ' + ResortList[name].info + '</span><p><h4>' + 'FourSquare top picks did not load ...' + '</h4></p>'
+                    content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span><p><h4>' + 'FourSquare top picks did not load ...' + '</h4></p>'
                 });
                 infowindow.open(map, marker);
             });
@@ -137,9 +138,9 @@ function ResortsViewModel() {
     };
 
     // MAIN: Generate list of resorts and markers
-    for (var resort in ResortList) {
-        self.resorts.push(new SkiResort(resort, ResortList[resort].pos));
-        self.placeMarker(resort, ResortList[resort].pos);
+    for (var resort in self.ResortList) {
+        self.resorts.push(new self.SkiResort(resort, self.ResortList[resort].pos));
+        self.placeMarker(resort, self.ResortList[resort].pos);
     }
 
 }
