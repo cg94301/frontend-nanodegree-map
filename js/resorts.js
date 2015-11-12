@@ -50,6 +50,28 @@ function ResortsViewModel() {
         self.position = position;
     }
 
+    // Singleton instance of info window
+    self.cinfowindow = (function() {
+        var instance;
+
+        function createInstance() {
+            var object = new google.maps.InfoWindow({ content: 'undefined' });
+            return object;
+        }
+
+        return {
+            getInstance: function() {
+                if (!instance) {
+                    instance = createInstance();
+                }
+                return instance;
+            }
+        };
+    })();
+
+    // Create singleton
+    self.infowindow = self.cinfowindow.getInstance();
+
     // Places markers on map. Adds events and infowindow to markers.
     self.placeMarker = function(name, position) {
 
@@ -65,9 +87,10 @@ function ResortsViewModel() {
             var lng = self.ResortList[name].pos.lng;
             var squareurl = 'https://api.foursquare.com/v2/venues/search?client_id=IELX4KNZFYKNYAGXKB2LTGSFWQ2VUZLCYWUJBJLUEMVVXPWE&client_secret=NANOUHNSJ4FZPIU1C5YFA53P2ZDMZTBTQMBPHIGB5X0NWKKV&v=20140730&locale=en&radius=2000&ll=' + lat + ',' + lng + '&limit=5';
             var squarearray = [];
-            var infowindow = new google.maps.InfoWindow({
-                content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>'
-            });
+            //var infowindow = new google.maps.InfoWindow({
+            //    content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>'
+            //});
+            self.infowindow.content = '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>';
 
             // Access Foursquare JSON
             $.getJSON(squareurl, function(data){
@@ -79,14 +102,15 @@ function ResortsViewModel() {
                     }
                 });
                 squarestring = squarearray.join('');
-                infowindow.content = infowindow.content + '<p>FourSquare Top Picks:<ol>' + squarestring + '</ol></p>';
-                infowindow.open(map, marker);
+                self.infowindow.content = self.infowindow.content + '<p>FourSquare Top Picks:<ol>' + squarestring + '</ol></p>';
+                self.infowindow.open(map, marker);
             }).error(function(e){
                 console.log(e);
-                var infowindow = new google.maps.InfoWindow({
-                    content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span><p><h4>' + 'FourSquare top picks did not load ...' + '</h4></p>'
-                });
-                infowindow.open(map, marker);
+                //var infowindow = new google.maps.InfoWindow({
+                //    content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span><p><h4>' + 'FourSquare top picks did not load ...' + '</h4></p>'
+                //});
+                self.infowindow.content = '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span><p><h4>' + 'FourSquare top picks did not load ...' + '</h4></p>';
+                self.infowindow.open(map, marker);
             });
         });
 
