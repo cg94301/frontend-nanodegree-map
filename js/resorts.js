@@ -90,8 +90,8 @@ function ResortsViewModel() {
             //var infowindow = new google.maps.InfoWindow({
             //    content: '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>'
             //});
-            self.infowindow.content = '<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>';
-
+            self.infowindow.setContent('<b>' + name + '</b>' + '<span> ' + self.ResortList[name].info + '</span>');
+            console.log(self.infowindow.content);
             // Access Foursquare JSON
             $.getJSON(squareurl, function(data){
                 squarearray = data.response.venues.map(function(venue){
@@ -102,7 +102,9 @@ function ResortsViewModel() {
                     }
                 });
                 squarestring = squarearray.join('');
-                self.infowindow.content = self.infowindow.content + '<p>FourSquare Top Picks:<ol>' + squarestring + '</ol></p>';
+                self.infowindow.setContent(self.infowindow.content + '<p>FourSquare Top Picks:<ol>' + squarestring + '</ol></p>');
+                console.log(self.infowindow.content);
+                console.log(marker);
                 self.infowindow.open(map, marker);
             }).error(function(e){
                 console.log(e);
