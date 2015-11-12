@@ -14,31 +14,31 @@ function ResortsViewModel() {
 
     // Resorts view model section
     self.ResortList = {};
-    
+
     self.ResortList['Squaw Valley'] = {pos: {lat: 39.1963, lng: -120.2336},
-                                  info: 'peak: 9,050 ft. trails: 170+'};
+                                       info: 'peak: 9,050 ft. trails: 170+'};
     self.ResortList.Heavenly = {pos: {lat: 38.9377, lng: -119.9088},
-                           info: 'peak: 10,067 ft. trails: 97'};
+                                info: 'peak: 10,067 ft. trails: 97'};
     self.ResortList.Kirkwood = {pos: {lat: 38.6840, lng: -120.0693},
-                           info: 'peak: 9,800 ft. trails: 65+'};
+                                info: 'peak: 9,800 ft. trails: 65+'};
     self.ResortList['Sugar Bowl'] = {pos: {lat: 39.3044, lng: -120.3358},
-                                info: 'peak: 8,383 ft. trails: 103'};
+                                     info: 'peak: 8,383 ft. trails: 103'};
     self.ResortList['Mt Rose'] = {pos: {lat: 39.3292, lng: -119.8858},
-                             info: 'peak: 9,700 ft. trails: 60+'};
+                                  info: 'peak: 9,700 ft. trails: 60+'};
     self.ResortList.Northstar = {pos: {lat: 39.2733, lng: -120.1025},
-                            info: 'peak: 8,610 ft. trails: 100'};
+                                 info: 'peak: 8,610 ft. trails: 100'};
     self.ResortList['Alpine Meadows'] = {pos: {lat: 39.1786, lng: -120.2277},
-                                    info: 'peak: 8,637 ft. trails: 100'};
+                                         info: 'peak: 8,637 ft. trails: 100'};
     self.ResortList['Sierra at Tahoe'] = {pos: {lat: 38.8078, lng: -120.0847},
-                                     info: 'peak: 8,852 ft. trails: 46'};
+                                          info: 'peak: 8,852 ft. trails: 46'};
     self.ResortList['Bear Valley'] = {pos: {lat: 38.4922, lng: -120.0067},
-                                 info: 'peak: 8,500 ft. trails: 67'};
+                                      info: 'peak: 8,500 ft. trails: 67'};
     self.ResortList['Diamond Peak'] = {pos: {lat: 39.2539, lng: -119.9153},
-                                  info: 'peak: 8,540 ft. trails: 30'};
+                                       info: 'peak: 8,540 ft. trails: 30'};
     self.ResortList.Boreal = {pos: {lat: 39.3317, lng: -120.3511},
-                         info: 'peak: 7,700 ft. trails: 41'};
+                              info: 'peak: 7,700 ft. trails: 41'};
     self.ResortList.Homewood = {pos: {lat: 39.0827, lng: -120.1755},
-                           info: 'peak: 7,881 ft. trails: 60'};
+                                info: 'peak: 7,881 ft. trails: 60'};
 
     self.markers = {};
     self.filter = ko.observable('');
@@ -48,7 +48,7 @@ function ResortsViewModel() {
         var self = this;
         self.name = name;
         self.position = position;
-    }
+    };
 
     // Singleton instance of info window
     self.cinfowindow = (function() {
